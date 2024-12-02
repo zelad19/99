@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חיפוש</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <input type="text" id="searchInput" placeholder="חפש טקסט" style="padding: 10px; width: 80%; font-size: 16px;">
+        <button onclick="highlightText()" style="padding: 10px;">חפש</button>
+    </div>
+    <div id="content" style="margin: 20px; font-size: 18px;">
+        <!-- כאן תכניס את הטקסט שלך -->
+        <p>זהו טקסט לדוגמה שמופיע בעמוד זה. ניתן לחפש מונחים ספציפיים בעמוד זה.</p>
+    </div>
+    <script>
+        function highlightText() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const contentDiv = document.getElementById('content');
+            const regex = new RegExp(`(${query})`, 'gi');
+            const originalText = contentDiv.innerHTML;
+
+            if (query) {
+                contentDiv.innerHTML = originalText.replace(regex, `<span class="highlight">$1</span>`);
+            } else {
+                alert('אנא הכנס מונח חיפוש.');
+            }
+        }
+    </script>
+</body>
+</html>
